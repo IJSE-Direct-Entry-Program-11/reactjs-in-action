@@ -1,7 +1,7 @@
 import './ManageCustomer.css';
 import React, {useState} from "react";
 import {TCustomer} from "../customer-list/CustomerList.tsx";
-import {useDispatcher} from "../context/CustomerContext.tsx";
+import {useDispatcher} from "../context/MainContext.tsx";
 
 export function ManageCustomer() {
     const [customer, setCustomer] =
@@ -10,13 +10,14 @@ export function ManageCustomer() {
             name: '',
             contact: ''
         });
+
     const dispatcher = useDispatcher();
 
     function handleFormSubmit(e: React.FormEvent) {
         e.preventDefault();
         dispatcher({
             type: 'add',
-            customer: customer
+            customer
         })
     }
 

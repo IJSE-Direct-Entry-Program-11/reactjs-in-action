@@ -2,7 +2,7 @@ import './App.css'
 import Header from "./header/Header.tsx";
 import CustomerList from "./customer-list/CustomerList.tsx";
 import {ManageCustomer} from "./manage-customer/ManageCustomer.tsx";
-import CustomerProvider from "./context/CustomerContext.tsx";
+import {MainProvider} from "./context/MainContext.tsx";
 
 function App() {
 
@@ -19,10 +19,10 @@ function App() {
             {/*fontSize={headerProps.fontSize}*/}
             {/*/>*/}
             <Header {...headerProps} />
-            <CustomerProvider>
+            <MainProvider>
                 <ManageCustomer />
                 <CustomerList />
-            </CustomerProvider>
+            </MainProvider>
         </>
     )
 }
