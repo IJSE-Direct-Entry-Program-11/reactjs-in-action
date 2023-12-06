@@ -1,6 +1,7 @@
 import './CustomerList.css';
 import {useState} from "react";
 import Customer from "../customer/Customer.tsx";
+import {useCustomerList, useDispatcher} from "../context/CustomerContext.tsx";
 
 export type TCustomer = {
     id: string,
@@ -8,21 +9,8 @@ export type TCustomer = {
     contact: string
 }
 
-const dummyCustomerRecords = [
-    { id: 'C001', name: 'Kasun', contact: '077-123467'},
-    { id: 'C002', name: 'Nuwan', contact: '078-123467'},
-    { id: 'C003', name: 'Upul', contact: '075-123467'},
-    { id: 'C004', name: 'Sampath', contact: '070-123467'},
-    { id: 'C005', name: 'Kalum', contact: '071-123467'}
-]
-
 export default function CustomerList() {
-    const [customerList, setCustomerList] =
-                useState<TCustomer[]>(dummyCustomerRecords);
-
-    function handleCustomerDelete(id: string){
-        setCustomerList(customerList.filter(c => c.id !== id));
-    }
+    const customerList = useCustomerList();
 
     return (
         <>
@@ -37,8 +25,7 @@ export default function CustomerList() {
             </thead>
             <tbody>
                 {customerList.map((customer) => (
-                    <Customer onDelete={handleCustomerDelete}
-                              key={customer.id}
+                    <Customer key={customer.id}
                               {...customer} />
                 ))}
             </tbody>
