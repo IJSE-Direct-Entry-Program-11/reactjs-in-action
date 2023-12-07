@@ -2,7 +2,8 @@ import React, {createContext, ReactNode, useContext, useReducer} from "react";
 import {User} from "firebase/auth";
 
 type Action = {
-    type: "sign-in" | "sign-out", [property: string]: any
+    type: "sign-in" | "sign-out",
+    [property: string]: any
 }
 
 const UserContext = createContext<User | null>(null);
