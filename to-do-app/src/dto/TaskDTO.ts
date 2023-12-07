@@ -1,5 +1,5 @@
 
-export class TaskDto {
+export class TaskDTO {
     // id: number;
     // description:string;
     // status: boolean;

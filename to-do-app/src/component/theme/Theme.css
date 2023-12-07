@@ -1,0 +1,17 @@
+.Theme {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    color: gray;
+}
+
+.Theme:hover {
+    cursor: pointer;
+    background-color: rgba(243, 255, 210, 0.2);
+    border-color: orangered !important;
+    color: orangered;
+}
+
+html[data-bs-theme="dark"] .Theme:hover {
+    border-color: lime !important;
+    color: lime;
+}

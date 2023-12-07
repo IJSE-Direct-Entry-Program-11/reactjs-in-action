@@ -1,0 +1,15 @@
+.Form input {
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+
+.Form button {
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+
+.Form {
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+}

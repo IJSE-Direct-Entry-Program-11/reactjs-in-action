@@ -1,4 +1,4 @@
-import {TaskDto} from "../dto/TaskDto.ts";
+import {TaskDTO} from "../dto/TaskDTO.ts";
 
 const API_BASE_URL = 'http://localhost:8080/api/v1/tasks';
 
@@ -6,17 +6,17 @@ export async function getAllTasks(email: string) {
     return await (await fetch(`${API_BASE_URL}?email=${email}`)).json();
 }
 
-export async function saveTask(task: TaskDto) {
+export async function saveTask(task: TaskDTO) {
     return await (await fetch(API_BASE_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(task)
-    })).json() as TaskDto;
+    })).json() as TaskDTO;
 }
 
-export async function updateTask(task: TaskDto) {
+export async function updateTask(task: TaskDTO) {
     const response = await fetch(`${API_BASE_URL}/${task.id}`, {
         method: "PATCH",
         headers: {

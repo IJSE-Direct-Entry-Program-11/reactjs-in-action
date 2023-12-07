@@ -1,0 +1,20 @@
+.Task:hover:not(.Task.delete) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Task label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.Task i:hover {
+    color: #ff006a;
+    cursor: pointer;
+    text-shadow: 0 0 6px #ff006a;
+}
+
+
+.Task input:checked+label {
+    text-decoration: line-through;
+    color: gray;
+}

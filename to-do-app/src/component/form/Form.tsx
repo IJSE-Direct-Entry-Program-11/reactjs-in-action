@@ -1,9 +1,9 @@
 import './Form.css';
 import React, {useRef, useState} from "react";
-import {useTaskDispatcher} from "../context/TaskContext.tsx";
-import {TaskDto} from "../dto/TaskDto.ts";
-import {saveTask} from "../service/task-service.tsx";
-import {useUser} from "../context/UserContext.tsx";
+import {useTaskDispatcher} from "../../context/TaskContext.tsx";
+import {TaskDTO} from "../../dto/TaskDTO.ts";
+import {saveTask} from "../../service/task-service.tsx";
+import {useUser} from "../../context/UserContext.tsx";
 
 export function Form() {
     const user = useUser();
@@ -13,26 +13,28 @@ export function Form() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        saveTask(new TaskDto(null, value, null, user?.email!))
+        if (!value.trim()) return;
+        saveTask(new TaskDTO(null, value, null, user?.email!))
             .then(task => {
                 taskDispatcher({type: 'add', task});
                 setValue("");
                 txtRef.current!.focus();
-            }).catch(err => {
-            alert(err);
-        });
+            })
+            .catch(err => {
+                alert("Failed to save the task, try again!");
+            });
     }
 
     return (
         <form onSubmit={handleSubmit}
-              className="d-flex gap-2 p-2 border-bottom">
-            <input className="form-control"
+              className="Form bg-body d-flex gap-1 p-2 border-bottom">
+            <input className="form-control shadow-sm rounded-0"
                    ref={txtRef}
                    value={value}
                    onChange={e => setValue(e.target.value)}
                    placeholder="Eg. Finish react to-do app"
                    type="text"/>
-            <button className="btn btn-primary">ADD</button>
+            <button className="btn btn-primary shadow-sm rounded-0">ADD</button>
         </form>
     );
 }
