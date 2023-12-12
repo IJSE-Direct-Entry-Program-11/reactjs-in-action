@@ -1,6 +1,7 @@
 import './Login.css';
-import {useId} from "react";
+import {useId, useRef} from "react";
 import {FieldError, useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 type LoginFormType = {
     username: string,
@@ -26,19 +27,39 @@ function getClasses(fieldState: FieldState,
 export function Login() {
     const username = useId();
     const password = useId();
-    const {register, formState, getFieldState} =
+    const navigate = useNavigate();
+    const {register, formState, getFieldState, handleSubmit,
+        setFocus} =
         useForm<LoginFormType>({
             mode: "onChange"
         });
+
+    function handleFormSubmit({username, password}:
+                                  LoginFormType){
+        if (username.trim() === 'admin' &&
+            password.trim() === 'admin123'){
+            localStorage.setItem("user", "authenticated");
+            navigate('/app');
+        }else{
+            localStorage.removeItem("user");
+            alert("Invalid login credentials, try again");
+            setFocus('username', {
+                shouldSelect: true
+            });
+        }
+    }
 
     return (
         <div className="flex flex-col h-screen
             justify-center items-center">
             <h1 className="text-3xl font-bold p-2">Login</h1>
             <div>Please enter your credentials to log in</div>
-            <form className="flex flex-col items-center mt-2">
+            <form
+                onSubmit={handleSubmit(handleFormSubmit)}
+                className="flex flex-col items-center mt-2">
                 <label htmlFor={username}>Username</label>
-                <input className={getClasses(
+                <input
+                    className={getClasses(
                     getFieldState('username', formState),
                     'form-control', 'mb-2')}
                        {...register('username',

@@ -2,9 +2,17 @@ import './Main.css';
 import {Dashboard} from "../dashboard/Dashboard.tsx";
 import {ManageCustomer} from "../manage-customer/ManageCustomer.tsx";
 import {ManageItem} from "../manage-item/ManageItem.tsx";
-import {Link, NavLink, Outlet} from "react-router-dom";
+import {Link, NavLink, Outlet, useNavigate} from "react-router-dom";
 
 export function Main() {
+
+    const navigate = useNavigate();
+
+    function handleSignOut(){
+        localStorage.removeItem("user");
+        navigate('/login');
+    }
+
     return (
         <>
             <header className="p-2 border-b
@@ -12,7 +20,8 @@ export function Main() {
                 <h1 className="text-2xl font-bold">
                     React Routing
                 </h1>
-                <button className="border px-3 py-1 rounded
+                <button onClick={handleSignOut}
+                    className="border px-3 py-1 rounded
                     border-rose-600 hover:bg-rose-600
                     hover:text-white">
                     Sign Out

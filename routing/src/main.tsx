@@ -8,8 +8,6 @@ import {Login} from "./view/login/Login.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <Login />
-        {/*<App />*/}
-        {/*<RouterProvider router={router}/>*/}
+        <RouterProvider router={router}/>
     </React.StrictMode>,
 )
