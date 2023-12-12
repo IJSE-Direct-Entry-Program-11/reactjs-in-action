@@ -1,7 +1,8 @@
 import './ManageCustomer.css';
 export function ManageCustomer() {
     return (
-        <div className="p-2 text-center">
+        <div className="p-2 text-center animate__animated
+                animate__slideInLeft animate__faster">
             <h1 className="text-2xl font-bold pb-2">Manage Customers</h1>
             <img src="https://media.wired.com/photos/5b806816be2f8d3a624b77c9/16:9/w_1072,h_603,c_limit/DIVO1.jpg"
                  alt="Dashboard Image"/>

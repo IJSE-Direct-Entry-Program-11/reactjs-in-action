@@ -1,7 +1,8 @@
 import './ManageItem.css';
 export function ManageItem() {
     return (
-        <div className="p-2 text-center">
+        <div className="p-2 text-center animate__fadeIn
+        animate__animated">
             <h1 className="text-2xl font-bold pb-2">Manage Items</h1>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bugatti_Chiron_1.jpg/800px-Bugatti_Chiron_1.jpg"
                  alt="Dashboard Image"/>
