@@ -11,14 +11,17 @@ export function Login() {
             <div>Please enter your credentials to log in</div>
             <form className="flex flex-col items-center mt-2">
                 <label htmlFor={username}>Username</label>
-                <input className="form-control"
+                <input className="form-control mb-2"
                        id={username} type="text"
                 placeholder="Enter your username here"/>
                 <label htmlFor={password}>Password</label>
-                <input className="form-control mt-2"
+                <input className="form-control mb-2"
                        id={password} type="password"
                 placeholder="Enter your password here"/>
-                <button className="border px-4 py-1 rounded mt-2">
+                <button className="border px-4 py-1
+                    border-sky-500
+                    hover:bg-sky-500 hover:text-white
+                    rounded mt-2">
                     Log In
                 </button>
             </form>
